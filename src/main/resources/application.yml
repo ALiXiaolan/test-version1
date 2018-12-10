@@ -1,0 +1,52 @@
+server:
+  port: 8887
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css,application/javascript,application/result
+    min-response-size: 1024
+  servlet:
+    session:
+      timeout: 1800
+spring:
+   resources:
+     cache:
+       period: -1
+   profiles.active: dev
+   freemarker.cache: false
+   datasource:
+     url: jdbc:mysql://182.61.26.2:3306/easmp-test?characterEncoding=utf8&useSSL=false&rewriteBatchedStatements=true
+     username: easmp
+     password: incar@2018
+     hikari:
+       minimumIdle: 5
+       maximumPoolSize: 15
+       data-source-properties:
+         cachePrepStmts: true
+         prepStmtCacheSize: 250
+         prepStmtCacheSqlLimit: 2048
+         useServerPrepStmts: false
+#  jpa配置
+   jpa:
+      show-sql: false
+      hibernate:
+          # Hibernate DDL  auto: create, create-drop, update, validate
+        ddl-auto: validate
+      properties:
+        hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+        hibernate.current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+#  jdbcTemplate配置
+   jdbc:
+      template:
+        fetch-size: -1
+        max-rows: -1
+        query-timeout:
+
+
+#  i18n资源文件配置
+   messages:
+      basename: i18n/base/messages,i18n/main/messages,i18n/sys/messages,i18n/rdb/messages
+      encoding: UTF-8
+      cache-duration: -1
+
+
+
